@@ -19,20 +19,17 @@ public class EtudiantController {
     @Autowired
     private ClasseRepository classeRepo;
 
-    // Récupérer tous les étudiants
     @GetMapping
     public List<Etudiant> all() {
         return etudiantRepo.findAll();
     }
 
-    // Récupérer les étudiants d’une classe spécifique
     @GetMapping("/classe/{id}")
     public List<Etudiant> byClasse(@PathVariable Integer id) {
         return etudiantRepo.findByClasse_Id(id);
     }
 
-    // Ajouter un étudiant
-    @PostMapping
+    @PostMapping("/add")
     public Etudiant add(@RequestBody Etudiant e) {
         if (e.getClasse() != null) {
             Classe c = classeRepo.findById(e.getClasse().getId())

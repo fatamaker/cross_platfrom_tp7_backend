@@ -25,7 +25,7 @@ public class FormationController {
         return repo.findAll();
     }
 
-    @PostMapping
+    @PostMapping("/add")
     public Formation add(@RequestBody Formation f) {
         return repo.save(f);
     }

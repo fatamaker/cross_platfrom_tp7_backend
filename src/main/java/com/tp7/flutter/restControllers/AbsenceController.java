@@ -27,13 +27,12 @@ public class AbsenceController {
         return absenceRepo.findAll();
     }
 
-    @PostMapping
+    @PostMapping("/add")
     public Absence insert(@RequestBody Absence a) {
         return absenceRepo.save(a);
     }
 
-    @DeleteMapping
-
+    @DeleteMapping("/delete")
     public void delete(@RequestBody AbsenceId id) {
         absenceRepo.deleteById(id);
     }
