@@ -28,13 +28,12 @@ public class MatiereController {
                 .orElseThrow(() -> new RuntimeException("Matiere non trouvée avec id : " + id));
     }
 
-    // ✅ Ajouter une nouvelle matière
-    @PostMapping
+    @PostMapping("/add")
     public Matiere createMatiere(@RequestBody Matiere matiere) {
         return matiereRepository.save(matiere);
     }
     
-    @PutMapping("/{id}")
+    @PutMapping("/edit/{id}")
     public Matiere updateMatiere(@PathVariable Integer id, @RequestBody Matiere matiereDetails) {
         Matiere matiere = matiereRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Matiere non trouvée avec id : " + id));

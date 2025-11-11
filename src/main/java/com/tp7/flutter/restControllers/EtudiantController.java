@@ -38,4 +38,28 @@ public class EtudiantController {
         }
         return etudiantRepo.save(e);
     }
+    
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Integer id) {
+        etudiantRepo.deleteById(id);
+    }
+
+    @PutMapping("/{id}")
+    public Etudiant update(@PathVariable Integer id, @RequestBody Etudiant updatedEtudiant) {
+        Etudiant etudiant = etudiantRepo.findById(id)
+                .orElseThrow(() -> new RuntimeException("Étudiant non trouvé"));
+        
+        etudiant.setNom(updatedEtudiant.getNom());
+        etudiant.setPrenom(updatedEtudiant.getPrenom());
+        etudiant.setDateNais(updatedEtudiant.getDateNais());
+        etudiant.setLieuNais(updatedEtudiant.getLieuNais());
+        
+        if (updatedEtudiant.getClasse() != null) {
+            Classe c = classeRepo.findById(updatedEtudiant.getClasse().getId())
+                    .orElseThrow(() -> new RuntimeException("Classe non trouvée"));
+            etudiant.setClasse(c);
+        }
+
+        return etudiantRepo.save(etudiant);
+    }
 }

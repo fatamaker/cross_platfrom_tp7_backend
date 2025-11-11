@@ -19,8 +19,12 @@ public class ClasseController {
         return repo.findAll();
     }
 
-    @PostMapping
+    @PostMapping("/add")
     public Classe add(@RequestBody Classe c) {
+        if (c.getNomClass() == null || c.getNomClass().isEmpty()) {
+            throw new RuntimeException("Le nom de la classe est obligatoire");
+        }
         return repo.save(c);
     }
+
 }
