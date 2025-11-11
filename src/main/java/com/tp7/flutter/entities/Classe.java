@@ -21,5 +21,6 @@ public class Classe {
     private Integer id;
 
     private String nomClass;
+    private int nbr_etud;
   
 }
