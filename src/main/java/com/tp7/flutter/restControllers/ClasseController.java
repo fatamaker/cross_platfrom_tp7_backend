@@ -26,5 +26,11 @@ public class ClasseController {
         }
         return repo.save(c);
     }
+    
+    @GetMapping("/byDepartement/{id}")
+    public List<Classe> getByDepartement(@PathVariable Integer id) {
+        return repo.findByDepartementId(id);
+    }
+
 
 }
