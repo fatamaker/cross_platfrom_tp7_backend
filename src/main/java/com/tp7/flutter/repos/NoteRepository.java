@@ -1,0 +1,20 @@
+package com.tp7.flutter.repos;
+
+
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
+import com.tp7.flutter.entities.Note;
+import com.tp7.flutter.entities.NoteId;
+
+public interface NoteRepository extends JpaRepository<Note, NoteId> {
+	List<Note> findByEtudiantId(Long etudiantId);
+	Note findByEtudiantIdAndCodMat(Long etudiantId, Long codMat);
+
+}

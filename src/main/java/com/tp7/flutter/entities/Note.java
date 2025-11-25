@@ -1,7 +1,9 @@
 package com.tp7.flutter.entities;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Data
@@ -11,14 +13,10 @@ import lombok.*;
 public class Note {
 
     @Id
-    @ManyToOne
-    @JoinColumn(name = "NCE")
-    private Etudiant etudiant;
+    private Long etudiantId;
 
     @Id
-    @ManyToOne
-    @JoinColumn(name = "CodMat")
-    private Matiere matiere;
+    private Long codMat;
 
-    private double valeurNote;
+    private Double valeurNote;
 }

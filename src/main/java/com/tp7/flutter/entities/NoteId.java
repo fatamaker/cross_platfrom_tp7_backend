@@ -1,13 +1,14 @@
 package com.tp7.flutter.entities;
 
 import java.io.Serializable;
+
+import jakarta.persistence.Column;
 import lombok.*;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class NoteId implements Serializable {
-
-    private Integer etudiant;  // correspond à #NCE
-    private Integer matiere;   // correspond à #CodMat
+    private Long etudiantId;
+    private Long codMat;
 }
